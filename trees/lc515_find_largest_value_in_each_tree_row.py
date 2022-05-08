@@ -1,6 +1,5 @@
-# Given a binary tree, return the level order traversal of its node values in (ie, from left to right, level by level).
+# 515. Find Largest Value in Each Tree Row
 
-from collections import deque
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -8,9 +7,8 @@ from collections import deque
 #         self.val = val
 #         self.left = left
 #         self.right = right
-# TC: O(n) and SC: O(n)
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def largestValues(self, root: Optional[TreeNode]) -> List[int]:
         if root is None:
             return []
         result = []    
@@ -18,15 +16,16 @@ class Solution:
 
         while len(q) != 0:
             numnodes = len(q)
-            temp = []
+            largest = float('-inf')
             for _ in range(numnodes):
                 node = q.popleft()
+                largest = max(largest, node.val)
                 # this is for binary tree
                 if node.left is not None:
                     q.append(node.left)
                 if node.right is not None:
                     q.append(node.right)
-                temp.append(node.val)
-            result.append(temp)
+                
+            result.append(largest)
 
         return result

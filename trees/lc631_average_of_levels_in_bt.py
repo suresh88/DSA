@@ -1,4 +1,4 @@
-# Given a binary tree, return the level order traversal of its node values in (ie, from left to right, level by level).
+# 637. Average of Levels in Binary Tree
 
 from collections import deque
 
@@ -10,7 +10,7 @@ from collections import deque
 #         self.right = right
 # TC: O(n) and SC: O(n)
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
         if root is None:
             return []
         result = []    
@@ -18,15 +18,16 @@ class Solution:
 
         while len(q) != 0:
             numnodes = len(q)
-            temp = []
+            temp = 0
             for _ in range(numnodes):
                 node = q.popleft()
+                temp = temp + node.val
                 # this is for binary tree
                 if node.left is not None:
                     q.append(node.left)
                 if node.right is not None:
                     q.append(node.right)
-                temp.append(node.val)
-            result.append(temp)
+                
+            result.append(temp/numnodes)
 
         return result

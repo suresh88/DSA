@@ -13,8 +13,8 @@ class Solution:
     def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
         if root is None:
             return []
-        result = collections.deque()    
-        q = collections.deque([root])
+        result = deque()    
+        q = deque([root])
 
         while len(q) != 0:
             numnodes = len(q)

@@ -13,11 +13,11 @@ class Solution:
         if root is None:
             return []
         result = []    
-        q = collections.deque([root])
+        q = deque([root])
         zigzag = True
         while len(q) != 0:
             numnodes = len(q)
-            temp = collections.deque()
+            temp = deque()
             for _ in range(numnodes):
                 node = q.popleft()
                 # this is for binary tree
