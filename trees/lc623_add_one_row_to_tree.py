@@ -17,17 +17,17 @@ class Solution:
             root = newnode
                 
         q = deque([root])
-        d = 0
+        level = 0
         while len(q) != 0:
             numnodes = len(q)
-            d += 1
+            level += 1
             for _ in range(numnodes):
                 node = q.popleft()
                 if node.left is not None:
                     q.append(node.left)
                 if node.right is not None:
                     q.append(node.right)
-                if depth - 1 == d:
+                if depth - 1 == level:
                     templeft = TreeNode(val)
                     tempright = TreeNode(val)
                     templeft.left = node.left
