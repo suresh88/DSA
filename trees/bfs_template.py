@@ -8,7 +8,7 @@ def bfs(root):
 
     while len(q) != 0:
         numnodes = len(q)
-        temp = []
+        temp = deque()
         for _ in range(numnodes):
             node = q.popleft()
             # this is for binary tree

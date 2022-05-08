@@ -15,7 +15,7 @@ class Solution:
         if root is None:
             return []
         result = []    
-        q = collections.deque([root])
+        q = deque([root])
 
         while len(q) != 0:
             numnodes = len(q)

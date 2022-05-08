@@ -1,4 +1,4 @@
-# 111. Minimum Depth of Binary Tree
+# 1161. 1161. Maximum Level Sum of a Binary Tree
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -7,13 +7,16 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def minDepth(self, root: Optional[TreeNode]) -> int:
+    def maxLevelSum(self, root: Optional[TreeNode]) -> int:
         if root is None:
             return 0
         q = deque([root])
         level = 0
+        maxsum = float('-inf')
+        minlevel = 0
         while len(q) != 0:
             numnodes = len(q)
+            total = 0
             level += 1
             for _ in range(numnodes):
                 node = q.popleft()
@@ -22,5 +25,10 @@ class Solution:
                     q.append(node.left)
                 if node.right is not None:
                     q.append(node.right)
-                if node.left is None and node.right is None:
-                    return level
+                total += node.val
+                
+            if total > maxsum:
+                maxsum = total
+                minlevel = level
+        
+        return minlevel
