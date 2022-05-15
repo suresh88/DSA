@@ -16,7 +16,7 @@ class Solution:
         (asuming parent information is available to it.)
         ... and to redirect its left pointer to point to its "right sibling" (in the original tree)
         (assuming its right sibling information is available to it.)
-        This also means that when it dfs on its left child, it will pass that information down to it.
+        This also means that when it calls dfs on its left child, it will pass that information down to it.
         '''
         
         if root is None:
