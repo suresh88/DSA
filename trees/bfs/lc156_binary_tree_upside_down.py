@@ -22,8 +22,6 @@ class Solution:
         if root is None:
             return None
         
-        globalroot = None
-        
         q = collections.deque([(root, None, None)])
         while len(q) != 0:
             (node, parent, rightsibling) = q.popleft()
