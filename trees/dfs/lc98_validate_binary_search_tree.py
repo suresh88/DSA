@@ -36,13 +36,13 @@ class Solution:
             if node.left is not None:
                 (s, l, b) = dfs(node.left)
                 smallest = min(smallest, s)
-                largest = max(largest, l)
+                # largest = max(largest, l)
                 if not b or l >= node.val:
                     amibst = False
                     
             if node.right is not None:
                 (s, l, b) = dfs(node.right)
-                smallest = min(smallest, s)
+                # smallest = min(smallest, s)
                 largest = max(largest, l)
                 if not b or node.val >= s:
                     amibst = False
