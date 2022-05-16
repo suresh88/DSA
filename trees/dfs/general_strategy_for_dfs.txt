@@ -1,0 +1,9 @@
+General Strategy fro DFS
+==========================
+
+Look at the global problem and express it as a local (per node) problem.
+
+It should be plainly obvious how the local solutions will be combined to generate the global solution.
+
+In order to compute the local solution, check whether a node needs information from its parent(above), or from its children(below). That will determine whether it is 
+top-down DFS or bottom-up DFS.
