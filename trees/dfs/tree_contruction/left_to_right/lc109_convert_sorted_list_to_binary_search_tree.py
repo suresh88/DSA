@@ -13,7 +13,7 @@
 #         self.right = right
 class Solution:
     def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
-        
+        # T(n): O(nlogn)
         def helper(h):
             if h is None:
                 return None
