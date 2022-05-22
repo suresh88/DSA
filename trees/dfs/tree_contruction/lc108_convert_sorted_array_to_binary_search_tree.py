@@ -7,6 +7,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    # T(n): O(n)
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         
         def helper(A, start, end):
