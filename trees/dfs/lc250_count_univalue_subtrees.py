@@ -1,5 +1,11 @@
 # 250. Count Univalue Subtrees
+'''
+Medium:
+-------
+Given the root of a binary tree, return the number of uni-value subtrees.
 
+A uni-value subtree means all nodes of the subtree have the same value.
+'''
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):

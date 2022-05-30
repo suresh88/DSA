@@ -1,4 +1,9 @@
 # 145. Binary Tree Postorder Traversal
+'''
+Easy:
+-------
+Given the root of a binary tree, return the postorder traversal of its nodes' values.
+'''
 
 # Definition for a binary tree node.
 # class TreeNode:

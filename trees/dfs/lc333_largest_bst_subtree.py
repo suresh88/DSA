@@ -1,4 +1,15 @@
 # 333. Largest BST Subtree
+'''
+Medium
+-------
+Given the root of a binary tree, find the largest subtree, which is also a Binary Search Tree (BST), where the largest means subtree has the largest number of nodes.
+
+A Binary Search Tree (BST) is a tree in which all the nodes follow the below-mentioned properties:
+
+The left subtree values are less than the value of their parent (root) node's value.
+The right subtree values are greater than the value of their parent (root) node's value.
+Note: A subtree must include all of its descendants.
+'''
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -8,49 +19,41 @@
 #         self.right = right
 class Solution:
     def largestBSTSubtree(self, root: Optional[TreeNode]) -> int:
-        '''
-        Global problem: Determine if the Tree is BST
-        Local (per-node) problem: Determine if the subtree at each node is a BST
-        Local -> global: All local problems must return True for global solution to be True, 
-        so if any local solution is False, global solution will become False.
-        '''
-        if root is None:
-            return True
         
-        isBST = [True]
+        if root is None:
+            return 0
+        
+        globalsize = [0]
         
         def dfs(node):
-            '''
-            A node will determine if it is BST by looking at its left and right subtrees
-            The largest value in a left subtree should be smaller than the root value.
-            The smallest value in the right subtree should be larger than the root value.
-            Both subtrees should be BSTs.
-            So each onde should return (smallest, largest, isbst) values in its subtree back to its parent.
-            '''
+            
+            mysize = 1
             amibst = True
-            smallest, largest = node.val, node.val
+            mysmallest, mylargest = node.val, node.val
             
             if node.left is None and node.right is None:
                 pass
             
             if node.left is not None:
-                (s, l, b) = dfs(node.left)
-                smallest = min(smallest, s)
-                # largest = max(largest, l)
-                if not b or l >= node.val:
+                (size, smallest, largest, isbst) = dfs(node.left)
+                mysize += size
+                mysmallest = min(mysmallest, smallest)
+                # mylargest = max(mylargest, largest)
+                if not isbst or largest >= node.val:
                     amibst = False
                     
             if node.right is not None:
-                (s, l, b) = dfs(node.right)
-                # smallest = min(smallest, s)
-                largest = max(largest, l)
-                if not b or node.val >= s:
+                (size, smallest, largest, isbst) = dfs(node.right)
+                mysize += size
+                # mysmallest = min(mysmallest, smallest)
+                mylargest = max(mylargest, largest)
+                if not isbst or node.val >= smallest:
                     amibst = False
                     
-            if amibst == False:
-                isBST[0] = False
+            if amibst and mysize > globalsize[0]:
+                globalsize[0] = mysize
                 
-            return (smallest, largest, amibst)
+            return (mysize, mysmallest, mylargest, amibst)
         
         dfs(root)
-        return isBST[0]
+        return globalsize[0]
